@@ -15,4 +15,6 @@ runs:
     - name: 'Launch Single-File Source-Code Program'
       id: java
       shell: bash
-      run: "${JAVA_HOME_11_X64}/bin/java" ${{ github.action_path }}/Action.java ${{ inputs.who-to-greet }}
+      run: |
+        echo "::set-output name=random-id::99"
+        "${JAVA_HOME_11_X64}/bin/java" "${{ github.action_path }}/Action.java" ${{ inputs.who-to-greet }}
