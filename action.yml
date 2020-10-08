@@ -1,12 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone'
 inputs:
-  who-to-greet:  # id of input
+  who-to-greet: # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
 outputs:
-  random-number: 
+  random-number:
     description: 'Random number'
     value: ${{ steps.java.outputs.random-id }}
 runs:
@@ -16,5 +16,5 @@ runs:
       id: java
       shell: bash
       run: |
-        echo "::set-output name=random-id::99"
-        "${JAVA_HOME_11_X64}/bin/java" "${{ github.action_path }}/Action.java" ${{ inputs.who-to-greet }}
+        echo "::set-output name=random-id::SOME-INITIAL-VALUE-TO-MAKE-THE-ACTION-YAML-PARSER-HAPPY"
+        "${JAVA_HOME_11_X64}/bin/java" "${{ github.action_path }}/Action.java" "${{ inputs.who-to-greet }}"
