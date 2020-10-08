@@ -1,14 +1,21 @@
-name: 'Hello World'
+name: 'hello-world-java-action'
 description: 'Greet someone'
+
+branding:
+  icon: 'coffee'
+  color: 'purple'
+
 inputs:
   who-to-greet: # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
+
 outputs:
   random-number:
     description: 'Random number'
     value: ${{ steps.java.outputs.random-id }}
+
 runs:
   using: 'composite'
   steps:
