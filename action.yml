@@ -2,7 +2,7 @@ name: 'hello-world-java-action'
 description: 'Greet someone'
 
 branding:
-  icon: 'coffee'
+  icon: 'heart'
   color: 'purple'
 
 inputs:
