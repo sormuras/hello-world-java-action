@@ -16,8 +16,8 @@ To learn how this action was built, see "[Creating a composite run steps action]
 ### `random-number`
 
 > Returns the next pseudorandom, Gaussian ("normally") distributed
-> {@code double} value with mean {@code 0.0} and standard
-> deviation {@code 1.0} from this random number generator's sequence.
+> `double` value with mean `0.0` and standard deviation `1.0` from
+> this random number generator's sequence.
 
 See [java.util.Random#nextGaussian()](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html#nextGaussian()) for details.
 
@@ -39,6 +39,22 @@ jobs:
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
 ```
+
+## `Action.java`
+
+```java
+import java.util.Random;
+
+class Action {
+  public static void main(String... args) {
+    System.out.printf("Hello %s.%n", args.length == 0 ? "Java" : args[0]);
+    var gaussian = new Random().nextGaussian();
+    System.out.println("::set-output name=random-id::" + gaussian);
+    System.out.println("Goodbye and have fun with: " + gaussian);
+  }
+}
+```
+
 ## Feedback and Discussion
 
 https://github.community/t/use-java-11-as-github-action-scripting-language/136755
