@@ -24,7 +24,21 @@ See [java.util.Random#nextGaussian()](https://docs.oracle.com/en/java/javase/11/
 ## Example usage
 
 ```yaml
-uses: sormuras/hello-world-java-action@main
-with:
-  who-to-greet: 'Mona the Octocat'
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: sormuras/hello-world-java-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
 ```
+## Feedback and Discussion
+
+https://github.community/t/use-java-11-as-github-action-scripting-language/136755
