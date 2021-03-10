@@ -32,11 +32,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - id: foo
+      - id: hello
         uses: sormuras/hello-world-java-action@v1
         with:
           who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+      - run: echo random-number ${{ steps.hello.outputs.random-number }}
         shell: bash
 ```
 
