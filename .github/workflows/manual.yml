@@ -3,10 +3,11 @@ on:
     inputs:
       name:
         description: 'Who to greet?'
+        required: false
         default: 'World'
 
 jobs:
-  test:
+  manual:
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-latest, windows-latest ]

@@ -6,15 +6,15 @@ branding:
   color: 'purple'
 
 inputs:
-  who-to-greet: # id of input
+  who-to-greet:
     description: 'Who to greet'
-    required: true
+    required: false
     default: 'World'
 
 outputs:
   random-number:
     description: 'Random number'
-    value: ${{ steps.java.outputs.random-id }}
+    value: ${{ steps.java.outputs.random-number }}
 
 runs:
   using: 'composite'
@@ -23,5 +23,5 @@ runs:
       id: java
       shell: bash
       run: |
-        echo "::set-output name=random-id::SOME-INITIAL-VALUE-TO-MAKE-THE-ACTION-YAML-PARSER-HAPPY"
+        echo "::set-output name=random-number::SOME-INITIAL-VALUE-TO-MAKE-THE-ACTION-YAML-PARSER-HAPPY"
         "${JAVA_HOME_11_X64}/bin/java" "${{ github.action_path }}/Action.java" "${{ inputs.who-to-greet }}"
