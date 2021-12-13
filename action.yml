@@ -22,6 +22,4 @@ runs:
     - name: 'Launch Single-File Source-Code Program'
       id: java
       shell: bash
-      run: |
-        echo "::set-output name=random-number::SOME-INITIAL-VALUE-TO-MAKE-THE-ACTION-YAML-PARSER-HAPPY"
-        "${JAVA_HOME_11_X64}/bin/java" "${{ github.action_path }}/Action.java" "${{ inputs.who-to-greet }}"
+      run: "${JAVA_HOME_11_X64}/bin/java" "${{ github.action_path }}/Action.java" "${{ inputs.who-to-greet }}"
