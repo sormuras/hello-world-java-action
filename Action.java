@@ -1,6 +1,7 @@
 import java.util.Random;
 
 class Action {
+  /** Entry-point for this Java action. */
   public static void main(String... args) {
     System.out.printf("Hello %s.%n", args.length == 0 ? "Java" : args[0]);
     var gaussian = new Random().nextGaussian();
@@ -20,16 +21,19 @@ class Action {
         throw new AssertionError("No such environment variable: GITHUB_OUTPUT");
       }
       try {
-        var file = Path.of(githubOutput);
-        if (file.getParent() != null) Files.createDirectories(file.getParent());
+        var file = java.nio.file.Path.of(githubOutput);
+        if (file.getParent() != null) java.nio.file.Files.createDirectories(file.getParent());
         var lines = (name + "=" + value).lines().toList();
         if (lines.size() != 1) {
           throw new UnsupportedOperationException("Multiline strings are no supported");
         }
-        debug("Write output %s to %s".formatted(lines, file));
-        Files.write(file, lines, UTF_8, CREATE, APPEND, WRITE);
-      } catch (IOException exception) {
-        throw new UncheckedIOException(exception);
+        java.nio.file.Files.write(file, lines,
+            java.nio.charset.StandardCharsets.UTF_8,
+            java.nio.file.StandardOpenOption.CREATE,
+            java.nio.file.StandardOpenOption.APPEND,
+            java.nio.file.StandardOpenOption.WRITE);
+      } catch (Exception exception) {
+        throw new RuntimeException(exception);
       }  
     }
   }

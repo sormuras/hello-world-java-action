@@ -31,7 +31,7 @@ jobs:
         os: [ ubuntu-latest, macos-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: hello
         uses: sormuras/hello-world-java-action@v1
         with:
@@ -49,8 +49,16 @@ class Action {
   public static void main(String... args) {
     System.out.printf("Hello %s.%n", args.length == 0 ? "Java" : args[0]);
     var gaussian = new Random().nextGaussian();
-    System.out.println("::set-output name=random-number::" + gaussian);
+    GitHub.setOutput("random-number", gaussian);
     System.out.println("Goodbye and have fun with: " + gaussian);
+  }
+
+  /** GitHub Actions helper. */
+  static class GitHub {
+    /** Sets an action's output parameter. */
+    static void setOutput(String name, Object value) {
+      //...
+    }
   }
 }
 ```

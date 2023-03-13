@@ -23,5 +23,4 @@ runs:
       id: java
       shell: bash
       run: |
-        echo "::set-output name=random-number::SOME-INITIAL-VALUE-TO-MAKE-THE-ACTION-YAML-PARSER-HAPPY"
-        "${JAVA_HOME_11_X64}/bin/java" "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
+        "${JAVA_HOME_17_X64}/bin/java" "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
