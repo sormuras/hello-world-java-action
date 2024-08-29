@@ -19,12 +19,8 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: 'Set up Java'
-    - uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: 21
     - name: 'Launch Single-File Source-Code Program'
       id: java
       shell: bash
-      run: java "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
+      run: |
+        "${JAVA_HOME_17_X64}/bin/java" "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
