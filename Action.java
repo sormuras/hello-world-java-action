@@ -23,7 +23,7 @@ class Action {
       try {
         var file = java.nio.file.Path.of(githubOutput);
         if (file.getParent() != null) java.nio.file.Files.createDirectories(file.getParent());
-        var lines = (name + "=" + value).lines().toList();
+        var lines = (name + "=" + value).lines().collect(java.util.stream.Collectors.toList());
         if (lines.size() != 1) {
           throw new UnsupportedOperationException("Multiline strings are no supported");
         }
