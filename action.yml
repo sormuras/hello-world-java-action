@@ -23,5 +23,5 @@ runs:
       id: java
       shell: bash
       run: |
-        echo "export PATH=${JAVA_HOME_21_X64}/bin:${JAVA_HOME_21_arm64}/bin" >> $GITHUB_ENV
+        export PATH=${JAVA_HOME_21_X64}/bin:${JAVA_HOME_21_arm64}/bin
         java "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
