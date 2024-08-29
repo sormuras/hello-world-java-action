@@ -65,4 +65,4 @@ class Action {
 
 ## Feedback and Discussion
 
-https://github.community/t/use-java-11-as-github-action-scripting-language/136755
+- [Synchronize default Java version on latest runners](https://github.com/actions/runner-images/discussions/10509)
