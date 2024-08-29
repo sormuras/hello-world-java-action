@@ -22,4 +22,4 @@ runs:
     - name: 'Launch Single-File Source-Code Program'
       id: java
       shell: bash
-      run: java --show-version "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
+      run: "${JAVA_HOME_11_X64}/bin/java" --show-version "${GITHUB_ACTION_PATH}/Action.java" "${{ inputs.who-to-greet }}"
